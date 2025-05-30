@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Redirector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>URL Redirector Configuration</h1>
+
+    <form id="redirect-form">
+        <h2>Add/Edit Redirect</h2>
+        <div>
+            <label for="acronym">Acronym:</label>
+            <input type="text" id="acronym" value="test" required>
+        </div>
+        <div>
+            <label for="destination">Destination URL:</label>
+            <input type="url" id="destination" value="https://www.google.com" required>
+        </div>
+    <button type="button" id="save-btn">Save Redirect</button>
+    </form>
+
+    <section id="redirects-list">
+        <h2>Existing Redirects</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Acronym</th>
+                    <th>Destination URL</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Redirects will be loaded here by script.js -->
+            </tbody>
+        </table>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
