@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         redirectsArrayToDisplay.forEach(redirect => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td><a href="/to/${redirect.acronym}" target="_blank">/${redirect.acronym}</a></td>
+                <td><a href="/${redirect.acronym}" target="_blank">/${redirect.acronym}</a></td>
                 <td><a href="${redirect.url}" target="_blank">${redirect.url}</a></td>
                 <td>${redirect.count}</td>
                 <td>

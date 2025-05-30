@@ -1,15 +1,15 @@
 {
   "gg": {
     "url": "https://www.google.ca",
-    "count": 2
+    "count": 3
   },
   "gh": {
     "url": "https://www.github.com",
-    "count": 10
+    "count": 11
   },
   "cf": {
     "url": "https://app.clockify.me/tracker",
-    "count": 10
+    "count": 11
   },
   "news": {
     "url": "https://news.bbc.co.uk",
