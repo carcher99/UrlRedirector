@@ -20,7 +20,13 @@ if (fs.existsSync(redirectsFilePath)) {
 // Test suite for API endpoints
 describe('API Endpoints', () => {
     beforeEach(() => {
-        redirects = {}; // Reset redirects before each test
+        // Load redirects from file before each test
+        if (fs.existsSync(redirectsFilePath)) {
+            const data = fs.readFileSync(redirectsFilePath, 'utf8');
+            redirects = JSON.parse(data);
+        } else {
+            redirects = {}; // Reset redirects if file does not exist
+        }
     });
 
     test('GET /api/redirects should return all redirects', async () => {
