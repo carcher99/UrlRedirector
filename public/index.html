@@ -5,22 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URL Redirector</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <h1>URL Redirector Configuration</h1>
+    <button type="button" id="toggle-form-btn">Toggle Add/Edit Redirect</button>
 
-    <form id="redirect-form">
-        <h2>Add/Edit Redirect</h2>
-        <div>
-            <label for="acronym">Acronym:</label>
-            <input type="text" id="acronym" value="test" required>
-        </div>
-        <div>
-            <label for="destination">Destination URL:</label>
-            <input type="url" id="destination" value="https://www.google.com" required>
-        </div>
-    <button type="button" id="save-btn">Save Redirect</button>
-    </form>
+    <div id="form-container">
+        <form id="redirect-form">
+            <h2>Add/Edit Redirect</h2>
+            <div>
+                <label for="acronym">Acronym:</label>
+                <input type="text" id="acronym" value="test" required>
+            </div>
+            <div>
+                <label for="destination">Destination URL:</label>
+                <input type="url" id="destination" value="https://www.google.com" required>
+            </div>
+        <button type="button" id="save-btn">Save Redirect</button>
+        </form>
+    </div>
 
     <section id="redirects-list">
         <h2>Existing Redirects</h2>
@@ -29,6 +33,7 @@
                 <tr>
                     <th>Acronym</th>
                     <th>Destination URL</th>
+                    <th>Count</th>
                     <th>Actions</th>
                 </tr>
             </thead>

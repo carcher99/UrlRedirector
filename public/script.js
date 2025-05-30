@@ -1,10 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const formContainer = document.getElementById('form-container');
+    formContainer.style.display = 'none'; // Hide the form initially
     const acronymInput = document.getElementById('acronym');
     const destinationInput = document.getElementById('destination');
     const saveBtn = document.getElementById('save-btn');
-    const redirectsTableBody = document.querySelector('#redirects-list tbody');
+    const redirectsTableBody = document.querySelector('#redirects-list tbody');    
+    const toggleFormBtn = document.getElementById('toggle-form-btn');
+
+    const toggleFormVisibility = () => {
+        //console.log('Toggle button clicked'); // Log when the button is clicked
+        //console.log('Current display state:', formContainer.style.display); // Log current display state
+        if (formContainer.style.display === 'none' || formContainer.style.display === '') {
+            formContainer.style.display = 'block'; // Show the form
+        } else {
+            formContainer.style.display = 'none'; // Hide the form
+        }
+    };
+
+    toggleFormBtn.addEventListener('click', toggleFormVisibility);
 
     const fetchRedirects = async () => {
+        // Fetch redirects from the server
         const response = await fetch('/api/redirects');
         const redirects = await response.json();
         displayRedirects(redirects);
@@ -16,12 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const acronym of sortedRedirects) {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>${acronym}</td>
+                <td>/${acronym}</td>
                 <td>${redirects[acronym].url}</td>
-                <td>${redirects[acronym].count}</td> <!-- Add count to the table -->
+                <td>${redirects[acronym].count}</td>
                 <td>
-                    <button class="edit-btn" data-acronym="${acronym}" data-destination="${redirects[acronym].url}">Edit</button>
-                    <button class="delete-btn" data-acronym="${acronym}">Delete</button>
+                    <i class="fas fa-edit edit-btn" data-acronym="${acronym}" data-destination="${redirects[acronym].url}"></i>
+                    <i class="fas fa-trash-alt delete-btn" data-acronym="${acronym}"></i>
                 </td>
             `;
             redirectsTableBody.appendChild(tr);
@@ -84,6 +100,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const destination = event.target.dataset.destination;
             acronymInput.value = acronym;
             destinationInput.value = destination;
+            // Show the form if it's hidden
+            const formContainer = document.getElementById('form-container');
+            if (formContainer.style.display === 'none') {
+                toggleFormVisibility();
+            }
         }
     });
 

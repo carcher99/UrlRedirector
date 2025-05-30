@@ -31,7 +31,7 @@ form {
 }
 
 form div {
-    margin-bottom: 15px;
+    margin-bottom: 5px; /* Reduced margin for compactness */
 }
 
 label {
@@ -42,7 +42,7 @@ label {
 input[type="text"],
 input[type="url"] {
     width: 100%;
-    padding: 10px;
+padding: 5px; /* Reduced padding for compactness */
     border: 1px solid #ccc;
     border-radius: 4px;
 }
@@ -71,14 +71,15 @@ table {
 }
 
 th {
-    text-align: left;
+    text-align: left; /* Align all headers to the left */
 }
 
 td {
     text-align: center; /* Center the count column */
-    padding: 10px;
+    padding: 5px; /* Even more compact padding */
     text-align: left;
     border-bottom: 1px solid #ddd;
+    font-size: 0.9em; /* Smaller font size for compactness */
 }
 
 th {
@@ -87,4 +88,19 @@ th {
 
 tr:hover {
     background-color: #f1f1f1;
+}
+
+.edit-btn, .delete-btn {
+    cursor: pointer;
+    font-size: 0.8em; /* Smaller icon size */
+    margin-right: 5px; /* Spacing between icons */
+    color: #666; /* Subtle color */
+}
+
+.edit-btn:hover {
+    color: #4CAF50; /* Green on hover */
+}
+
+.delete-btn:hover {
+    color: #f44336; /* Red on hover */
 }
