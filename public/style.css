@@ -80,7 +80,7 @@ th[data-sort]:hover {
 }
 
 td {
-    text-align: center; /* Center the count column */
+
     padding: 5px; /* Even more compact padding */
     text-align: left;
     border-bottom: 1px solid #ddd;

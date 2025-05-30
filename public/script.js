@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSortDirection = 'asc'; // Default sort direction
 
     const toggleFormVisibility = () => {
-        //console.log('Toggle button clicked'); // Log when the button is clicked
-        //console.log('Current display state:', formContainer.style.display); // Log current display state
+
+
         if (formContainer.style.display === 'none' || formContainer.style.display === '') {
             formContainer.style.display = 'block'; // Show the form
         } else {
@@ -138,12 +138,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     saveBtn.addEventListener('click', async () => {
         await saveRedirect(); // Call the save function
-    }, { once: true }); // The listener will be removed after the first call
+    });
 
     redirectsTableBody.addEventListener('click', (event) => {
         if (event.target.classList.contains('delete-btn')) {
             const acronym = event.target.dataset.acronym;
-            if (confirm(`Are you sure you want to delete the shortcut /to/${acronym}?`)) {
+            if (confirm(`Are you sure you want to delete the shortcut /${acronym}?`)) {
                 deleteRedirect(acronym);
             }
         } else if (event.target.classList.contains('edit-btn')) {

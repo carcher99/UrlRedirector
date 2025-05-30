@@ -7,10 +7,6 @@
     "url": "https://www.github.com",
     "count": 11
   },
-  "cf": {
-    "url": "https://app.clockify.me/tracker",
-    "count": 11
-  },
   "news": {
     "url": "https://news.bbc.co.uk",
     "count": 23
@@ -26,5 +22,9 @@
   "guru": {
     "url": "https://issi.greenlight.guru/v2/signin",
     "count": 2
+  },
+  "cf": {
+    "url": "https://app.clockify.me/tracker",
+    "count": 0
   }
 }
