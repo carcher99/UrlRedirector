@@ -1,21 +1,19 @@
 # Progress: URL Redirector
 
-## Current Status
-- Basic project structure and initial server and frontend files are created.
-- Dependencies are installed.
-- Basic redirection and API endpoints are implemented.
-- File-based storage for redirects is implemented.
-
 ## What Works
-- The basic structure for documentation is in place.
+- The URL Redirector application is running successfully.
+- API endpoints for adding, retrieving, and deleting redirects are functional.
+- API tests have been updated and are passing.
 
 ## What's Left to Build
-- Add more robust error handling and input validation.
-- Improve the frontend styling and user experience.
-- Consider more advanced features (e.g., import/export, analytics, authentication) in future iterations.
+- Implement additional features as needed based on user feedback.
+
+## Current Status
+- The project is in a stable state with all core functionalities working.
+- Documentation has been created, including a README file.
 
 ## Known Issues
-- None yet.
+- No known issues at this time.
 
 ## Evolution of Project Decisions
-- Started with a simple file-based storage for ease of implementation in the initial phase.
+- Cleaned up unnecessary packages and files to streamline the project.
