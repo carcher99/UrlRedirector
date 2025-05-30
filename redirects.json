@@ -1,6 +1,22 @@
 {
-  "news": "https://news.bbc.co.uk",
-  "gg": "https://www.google.com",
-  "test": "https://www.google.com",
-  "gh": "https://www.github.com"
+  "gg": {
+    "url": "https://www.google.com",
+    "count": 2
+  },
+  "test": {
+    "url": "https://www.google.com",
+    "count": 0
+  },
+  "gh": {
+    "url": "https://www.github.com",
+    "count": 5
+  },
+  "cf": {
+    "url": "https://www.clockify.me",
+    "count": 0
+  },
+  "news": {
+    "url": "https://news.bbc.co.uk",
+    "count": 17
+  }
 }

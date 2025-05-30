@@ -12,13 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const displayRedirects = (redirects) => {
         redirectsTableBody.innerHTML = '';
-        for (const acronym in redirects) {
+        const sortedRedirects = Object.keys(redirects).sort(); // Sort the acronyms alphabetically
+        for (const acronym of sortedRedirects) {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>${acronym}</td>
-                <td>${redirects[acronym]}</td>
+                <td>${redirects[acronym].url}</td>
+                <td>${redirects[acronym].count}</td> <!-- Add count to the table -->
                 <td>
-                    <button class="edit-btn" data-acronym="${acronym}" data-destination="${redirects[acronym]}">Edit</button>
+                    <button class="edit-btn" data-acronym="${acronym}" data-destination="${redirects[acronym].url}">Edit</button>
                     <button class="delete-btn" data-acronym="${acronym}">Delete</button>
                 </td>
             `;
@@ -67,7 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    saveBtn.addEventListener('click', saveRedirect);
+    saveBtn.addEventListener('click', async () => {
+        await saveRedirect(); // Call the save function
+    }, { once: true }); // The listener will be removed after the first call
 
     redirectsTableBody.addEventListener('click', (event) => {
         if (event.target.classList.contains('delete-btn')) {

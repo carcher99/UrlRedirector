@@ -24,7 +24,7 @@ if (fs.existsSync(redirectsFilePath)) {
 // Save redirects to file
 const saveRedirects = () => {
     try {
-        console.log('Attempting to save redirects:', JSON.stringify(redirects, null, 2));
+        //console.log('Attempting to save redirects:', JSON.stringify(redirects, null, 2));
         fs.writeFileSync(redirectsFilePath, JSON.stringify(redirects, null, 2), 'utf8');
         console.log('fs.writeFileSync executed.');
         console.log('Redirects saved to file.');
@@ -33,13 +33,16 @@ const saveRedirects = () => {
     }
 };
 
-// Redirection route
 app.get('/:acronym', (req, res) => {
+    console.log('GET request received for acronym:', req.params.acronym); // Log the incoming request
     const acronym = req.params.acronym;
     const destination = redirects[acronym];
 
     if (destination) {
-        res.redirect(302, destination);
+        destination.count += 1; // Increment the usage count
+        console.log(JSON.stringify(destination));
+        saveRedirects(); // Save the updated redirects to file
+        res.redirect(302, destination.url); // Redirect to the URL
     } else {
         res.status(404).send('Shortcut not found');
     }
@@ -47,6 +50,7 @@ app.get('/:acronym', (req, res) => {
 
 // API endpoint to get all redirects
 app.get('/api/redirects', (req, res) => {
+    console.log('GET /api/redirects endpoint hit with body:', req.body);
     res.json(redirects);
 });
 
@@ -55,7 +59,10 @@ app.post('/api/redirects', (req, res) => {
     console.log('POST /api/redirects endpoint hit with body:', req.body);
     const { acronym, destination } = req.body;
     if (acronym && destination) {
-        redirects[acronym] = destination;
+        redirects[acronym] = {
+            url: destination,
+            count: 0 // Initialize count to 0 for new redirects
+        };
         saveRedirects();
         res.status(200).send('Redirect saved');
     } else {
