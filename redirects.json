@@ -5,11 +5,11 @@
   },
   "gh": {
     "url": "https://www.github.com",
-    "count": 7
+    "count": 8
   },
   "cf": {
     "url": "https://app.clockify.me/tracker",
-    "count": 4
+    "count": 6
   },
   "news": {
     "url": "https://news.bbc.co.uk",
@@ -17,7 +17,7 @@
   },
   "tiementry": {
     "url": "http://localhost:3000",
-    "count": 1
+    "count": 2
   },
   "home": {
     "url": "https://sites.google.com/iss-i.ca/issi-intranet/home",
@@ -25,6 +25,6 @@
   },
   "guru": {
     "url": "https://issi.greenlight.guru/v2/signin",
-    "count": 1
+    "count": 2
   }
 }
