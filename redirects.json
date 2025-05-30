@@ -1,22 +1,30 @@
 {
   "gg": {
-    "url": "https://www.google.com",
-    "count": 2
-  },
-  "test": {
-    "url": "https://www.google.com",
-    "count": 0
+    "url": "https://www.google.ca",
+    "count": 1
   },
   "gh": {
     "url": "https://www.github.com",
-    "count": 5
+    "count": 7
   },
   "cf": {
-    "url": "https://www.clockify.me",
-    "count": 0
+    "url": "https://app.clockify.me/tracker",
+    "count": 4
   },
   "news": {
     "url": "https://news.bbc.co.uk",
-    "count": 17
+    "count": 22
+  },
+  "tiementry": {
+    "url": "http://localhost:3000",
+    "count": 1
+  },
+  "home": {
+    "url": "https://sites.google.com/iss-i.ca/issi-intranet/home",
+    "count": 1
+  },
+  "guru": {
+    "url": "https://issi.greenlight.guru/v2/signin",
+    "count": 1
   }
 }

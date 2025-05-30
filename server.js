@@ -57,7 +57,8 @@ app.get('/api/redirects', (req, res) => {
 // API endpoint to add or update a redirect
 app.post('/api/redirects', (req, res) => {
     console.log('POST /api/redirects endpoint hit with body:', req.body);
-    const { acronym, destination } = req.body;
+    const { acronym, destination } = req.body; // Extract acronym and destination from the request body
+    console.log('Received acronym:', acronym, 'and destination:', destination); // Log the received data
     if (acronym && destination) {
         redirects[acronym] = {
             url: destination,
