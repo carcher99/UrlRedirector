@@ -20,6 +20,9 @@ A tool to redirect short form URLs with a web configuration interface.
    npm install
    ```
 
+## Additional Configuration
+- Added `127.0.0.1` to the local hosts file. This would need to be done in DNS for it to be usable widely.
+
 ## Usage
 
 To start the application, run:
