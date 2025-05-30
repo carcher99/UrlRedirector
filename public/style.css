@@ -72,6 +72,11 @@ table {
 
 th {
     text-align: left; /* Align all headers to the left */
+    cursor: pointer; /* Indicate clickable headers */
+}
+
+th[data-sort]:hover {
+    background-color: #e0e0e0; /* Highlight on hover */
 }
 
 td {

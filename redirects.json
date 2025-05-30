@@ -1,7 +1,7 @@
 {
   "gg": {
     "url": "https://www.google.ca",
-    "count": 1
+    "count": 2
   },
   "gh": {
     "url": "https://www.github.com",
@@ -9,11 +9,11 @@
   },
   "cf": {
     "url": "https://app.clockify.me/tracker",
-    "count": 6
+    "count": 10
   },
   "news": {
     "url": "https://news.bbc.co.uk",
-    "count": 22
+    "count": 23
   },
   "tiementry": {
     "url": "http://localhost:3000",

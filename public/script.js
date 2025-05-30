@@ -4,8 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const acronymInput = document.getElementById('acronym');
     const destinationInput = document.getElementById('destination');
     const saveBtn = document.getElementById('save-btn');
-    const redirectsTableBody = document.querySelector('#redirects-list tbody');    
+    const redirectsTableBody = document.querySelector('#redirects-list tbody');
     const toggleFormBtn = document.getElementById('toggle-form-btn');
+    const searchInput = document.getElementById('search-input');
+
+    let allRedirects = {}; // Store all redirects for filtering
+    let currentSortColumn = 'acronym'; // Default sort column
+    let currentSortDirection = 'asc'; // Default sort direction
 
     const toggleFormVisibility = () => {
         //console.log('Toggle button clicked'); // Log when the button is clicked
@@ -20,28 +25,74 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleFormBtn.addEventListener('click', toggleFormVisibility);
 
     const fetchRedirects = async () => {
-        // Fetch redirects from the server
         const response = await fetch('/api/redirects');
-        const redirects = await response.json();
-        displayRedirects(redirects);
+        const fetchedRedirects = await response.json();
+        allRedirects = {};
+        for (const acronym in fetchedRedirects) {
+            allRedirects[acronym] = { ...fetchedRedirects[acronym], acronym: acronym };
+        }
+        sortAndFilterAndDisplayRedirects(); // Use the combined function
     };
 
-    const displayRedirects = (redirects) => {
+    // Remove the old filterAndDisplayRedirects as it's now combined
+
+    const sortAndFilterAndDisplayRedirects = () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        let redirectsToDisplay = Object.values(allRedirects);
+
+        // Apply filter
+        redirectsToDisplay = redirectsToDisplay.filter(redirect => {
+            return redirect.acronym.toLowerCase().includes(searchTerm) ||
+                   redirect.url.toLowerCase().includes(searchTerm);
+        });
+
+        // Apply sort
+        redirectsToDisplay.sort((a, b) => {
+            let valA, valB;
+            if (currentSortColumn === 'acronym') {
+                valA = a.acronym.toLowerCase();
+                valB = b.acronym.toLowerCase();
+            } else if (currentSortColumn === 'url') {
+                valA = a.url.toLowerCase();
+                valB = b.url.toLowerCase();
+            } else if (currentSortColumn === 'count') {
+                valA = a.count;
+                valB = b.count;
+            }
+
+            if (valA < valB) return currentSortDirection === 'asc' ? -1 : 1;
+            if (valA > valB) return currentSortDirection === 'asc' ? 1 : -1;
+            return 0;
+        });
+
+        displayRedirects(redirectsToDisplay);
+    };
+
+    const sortRedirects = (column) => {
+        if (currentSortColumn === column) {
+            currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            currentSortColumn = column;
+            currentSortDirection = 'asc';
+        }
+        sortAndFilterAndDisplayRedirects();
+    };
+
+    const displayRedirects = (redirectsArrayToDisplay) => {
         redirectsTableBody.innerHTML = '';
-        const sortedRedirects = Object.keys(redirects).sort(); // Sort the acronyms alphabetically
-        for (const acronym of sortedRedirects) {
+        redirectsArrayToDisplay.forEach(redirect => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>/${acronym}</td>
-                <td>${redirects[acronym].url}</td>
-                <td>${redirects[acronym].count}</td>
+                <td><a href="/to/${redirect.acronym}" target="_blank">/${redirect.acronym}</a></td>
+                <td><a href="${redirect.url}" target="_blank">${redirect.url}</a></td>
+                <td>${redirect.count}</td>
                 <td>
-                    <i class="fas fa-edit edit-btn" data-acronym="${acronym}" data-destination="${redirects[acronym].url}"></i>
-                    <i class="fas fa-trash-alt delete-btn" data-acronym="${acronym}"></i>
+                    <i class="fas fa-edit edit-btn" data-acronym="${redirect.acronym}" data-destination="${redirect.url}"></i>
+                    <i class="fas fa-trash-alt delete-btn" data-acronym="${redirect.acronym}"></i>
                 </td>
             `;
             redirectsTableBody.appendChild(tr);
-        }
+        });
     };
 
     const saveRedirect = async () => {
@@ -106,6 +157,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 toggleFormVisibility();
             }
         }
+    });
+
+    searchInput.addEventListener('keyup', sortAndFilterAndDisplayRedirects);
+
+    // Add event listeners for sorting
+    document.querySelectorAll('th[data-sort]').forEach(header => {
+        header.addEventListener('click', () => {
+            sortRedirects(header.dataset.sort);
+        });
     });
 
     // Initial fetch of redirects
