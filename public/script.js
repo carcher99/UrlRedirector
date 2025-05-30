@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const acronym in redirects) {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td>/to/${acronym}</td>
+                <td>${acronym}</td>
                 <td>${redirects[acronym]}</td>
                 <td>
                     <button class="edit-btn" data-acronym="${acronym}" data-destination="${redirects[acronym]}">Edit</button>

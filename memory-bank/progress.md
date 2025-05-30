@@ -2,18 +2,16 @@
 
 ## What Works
 - The URL Redirector application is running successfully.
-- API endpoints for adding, retrieving, and deleting redirects are functional.
-- API tests have been updated and are passing.
+- API tests have been updated and are functioning correctly.
+- The README file has been created to provide project documentation.
 
 ## What's Left to Build
-- Implement additional features as needed based on user feedback.
+- Implement the web interface for managing URL redirections.
+- Ensure persistent storage for URL mappings beyond the initial JSON file.
 
 ## Current Status
-- The project is in a stable state with all core functionalities working.
-- Documentation has been created, including a README file.
+- The application is in a stable state with core functionalities operational.
+- Ongoing development will focus on enhancing the user interface and storage solutions.
 
 ## Known Issues
-- No known issues at this time.
-
-## Evolution of Project Decisions
-- Cleaned up unnecessary packages and files to streamline the project.
+- Need to address the persistence of URL mappings for future scalability.

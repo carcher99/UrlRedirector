@@ -34,7 +34,7 @@ const saveRedirects = () => {
 };
 
 // Redirection route
-app.get('/to/:acronym', (req, res) => {
+app.get('/:acronym', (req, res) => {
     const acronym = req.params.acronym;
     const destination = redirects[acronym];
 
